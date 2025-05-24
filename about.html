@@ -13,8 +13,8 @@
 </head>
 
 <body>
-
     <!-- ------------------------------------ Header Start -----------------------------  -->
+
     <section id="header">
         <div id="app-logo">
             <a href="#"><img src="images/app_logo.png" class="logo" alt=""></a>
@@ -48,6 +48,7 @@
     <section id="features">
         <h1>App Features</h1>
     </section>
+
     <!-- ------------------------------ Analyze Section Start ------------------------  -->
 
     <section id="analyze-section">
@@ -62,12 +63,16 @@
 
             <div class="sub-container">
                 <h4>Slow Motion Analysis</h4>
-                <video src="images/preview_videos/slow_mo_preview.mp4" autoplay muted></video>
+                <video id="slowMoVideo" src="images/preview_videos/slow_mo_preview.mp4" muted></video>
+                <input type="range" id="slowMoVideoSeek" value="0" step="0.1" class="seek-bar" onchange="seekVideo('slowMoVideo', this)">
+                <button onclick="toggleVideo('slowMoVideo', this)" class="video-btn" data-state="paused"><i class="fa-solid fa-play"></i></button>
             </div>
 
             <div class="sub-container">
                 <h4>Frame-By-Frame Analysis</h4>
-                <video src="images/preview_videos/frame_by_frame_preview.mp4" autoplay muted></video>
+                <video id="frameByFrameVideo" src="images/preview_videos/frame_by_frame_preview.mp4" muted></video>
+                <input type="range" id="frameByFrameVideoSeek" value="0" step="0.1" class="seek-bar" onchange="seekVideo('frameByFrameVideo', this)">
+                <button onclick="toggleVideo('frameByFrameVideo', this)" class="video-btn" data-state="paused"><i class="fa-solid fa-play"></i></button>
             </div>
         </div>
     </section>
@@ -77,23 +82,52 @@
     <!-- --------------------------- --- Compare Section Start ------------------------  -->
 
     <section id="compare-section">
+        <h2>Compare To Professional Skateboarders</h2>
+        <h3>Compare your trick attemps to pro skaters to help figure out what your doing wrong. Compare your new trick attempts with your old attempts to see your progression.</h3>
 
+        <div class="container">
+            <div class="sub-container">
+                <h4>Pro Skaters</h4>
+                <video id="proSkatersVideo" src="images/preview_videos/pro_skaters_preview.mp4" muted></video>
+                <input type="range" id="proSkatersVideoSeek" value="0" step="0.1" class="seek-bar" onchange="seekVideo('proSkatersVideo', this)">
+                <button onclick="toggleVideo('proSkatersVideo', this)" class="video-btn" data-state="paused"><i class="fa-solid fa-play"></i></button>
+            </div>
+
+            <div class="sub-container">
+                <h4>Compare to Pro Skaters</h4>
+                <video id="proSkatersPreview" src="images/preview_videos/pro_compare_preview.mp4" muted></video>
+                <input type="range" id="proSkatersPreviewSeek" value="0" step="0.1" class="seek-bar" onchange="seekVideo('proSkatersPreview', this)">
+                <button onclick="toggleVideo('proSkatersPreview', this)" class="video-btn" data-state="paused"><i class="fa-solid fa-play"></i></button>
+            </div>
+
+            <div class="sub-container">
+                <h4>Compare to Your Past Self</h4>
+                <video id="selfComparePreview" src="images/preview_videos/self_compare_preview.mp4" muted></video>
+                <input type="range" id="selfComparePreviewSeek" value="0" step="0.1" class="seek-bar" onchange="seekVideo('selfComparePreview', this)">
+                <button onclick="toggleVideo('selfComparePreview', this)" class="video-btn" data-state="paused"><i class="fa-solid fa-play"></i></button>
+            </div>
+        </div>
     </section>
 
     <!-- -------------------------------- Compare Section End -------------------------  -->
 
-    <!-- ---------------------------- Track Progress Section Start --------------------  -->
-
-    <section id="track-progress-section">
-
-    </section>
-
-    <!-- ----------------------------- Track Progress Section End ----------------------  -->
-
     <!-- ------------------------------ Community Section Start ------------------------  -->
 
     <section id="community-section">
+        <h2>Engage with a Community</h2>
+        <h3>Post your videos to the community section to receive advice from other users. Direct Message other users to share your insights about skateboarding.</h3>
 
+        <div class="container">
+            <div class="sub-container">
+                <h4>Upload Posts to Receive Advice</h4>
+
+            </div>
+
+            <div class="sub-container">
+                <h4>Chat with Other Users</h4>
+
+            </div>
+        </div>
     </section>
 
     <!-- ------------------------------ Community Section End -------------------------  -->
@@ -101,10 +135,99 @@
     <!-- ------------------------------------ Footer Start ----------------------------  -->
 
     <footer>
+        <div class="container">
+            <div class="footer-sub-section">
+                <img src="images/app_logo.png" alt="">
+            </div>
 
+            <div class="footer-sub-section">
+                <h4>Contact</h4>
+
+                <a href="mailto:skatepediaiosapp@gmail.com">skatepediaiosapp@gmail.com</a>
+            </div>
+
+            <div class="footer-sub-section">
+                <h4>About</h4>
+
+                <a href="#analyze-section">Analyze Your Skating</a>
+                <a href="#compare-section">Compare with Pros</a>
+                <a href="#community-section">Engage with Community</a>
+            </div>
+
+            <div class="footer-sub-section">
+                <h4>Account</h4>
+
+                <a href="myAccount.html">My Account</a>
+                <a href="login.html">Login</a>
+            </div>
+
+            <div class="footer-sub-section">
+                <h4>Information</h4>
+
+                <a href="privacyPolicy.html">Privacy Policy</a>
+                <a href="termsOfService.html">Terms of Service</a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <h5>©SkatePedia</h5>
+        </div>
     </footer>
 
     <!-- ------------------------------------ Footer End ------------------------------  -->
+
+    <script>
+        function toggleVideo(videoId, button) {
+            const video = document.getElementById(videoId);
+            const seekBar = document.getElementById(videoId + "Seek");
+
+            const icon = button.querySelector("i");
+
+            // Switches button icon according to the play state of the video
+            if (video.paused) {
+                video.play();
+
+                icon.classList.remove("fa-play");
+                icon.classList.add("fa-pause");
+
+                button.setAttribute("data-state", "playing");
+            } else {
+                video.pause();
+
+                icon.classList.remove("fa-pause");
+                icon.classList.add("fa-play");
+
+                button.setAttribute("data-state", "paused");
+            }
+
+            // Syncs the seek bar with video playback
+            video.addEventListener("timeupdate", () => {
+                seekBar.value = video.currentTime;
+
+                if (video.currentTime >= video.duration) {
+                    video.currentTime = 0;
+                    video.pause();
+
+                    icon.classList.remove("fa-pause");
+                    icon.classList.add("fa-play");
+
+                    button.setAttribute("data-state", "paused");
+                };
+            });
+
+            // Sets the seek bar's max length to the duration of the video when the video is loaded
+            if ( video.readyState === 4 ) {
+                seekBar.max = video.duration;
+            };
+        }
+
+        // Seeks the video to the specified value from the seek bar
+        function seekVideo(videoId, input) {
+            const video = document.getElementById(videoId);
+            
+            video.currentTime = input.value;
+        }
+    </script>
 
     <script src="script.js"></script>
 </body>

@@ -1,10 +1,12 @@
-@import url('httlps://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* @import url('httlps://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Spartan', sans-serif;
+    scroll-behavior: smooth;
+    scroll-padding-top: 12vh; 
 }
 
 h1 {
@@ -57,7 +59,7 @@ p {
     position: sticky;
     top: 0;
     left: 0;
-    height: 15vh;
+    height: 12vh;
 }
 
 #app-logo {
@@ -115,10 +117,10 @@ p {
 
 #hero {
     width: 100%;
-    height: 70vh;
+    height: 88vh;
     background-image: url("images/backgrounds/hero_background.jpg");
     background-size: cover;
-    background-position: top 25% left 25%;
+    background-position: top 25% left 50%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -147,7 +149,8 @@ p {
 #features {
     width: 100%;
     text-align: center;
-    margin: 40px 0;
+    padding: 40px 0;
+    background: #fcf3e3;  
 }
 
 #features h1 {
@@ -158,76 +161,225 @@ p {
 /* ---------------------------- Analyze Feature Start  ------------------------------ */
 
 #analyze-section {
-    display: block;
-    justify-content: center;
-    align-items: start;
-    width: 96%;
-    height: auto;
-    background-color: #e79e009a;
-    border-radius: 20px;
-    margin: 0 2%;
-}
-
-#analyze-section .container {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%; 
-    height: auto;
-    margin: 15px 0;
-}
-
-#analyze-section div {
-    width: 30%;
-    height: auto;
-    padding: 0 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    padding: 4rem 2rem;
+    /* background-color: #7e92a775;  */
+    background-color: #a79a7e75; 
+    text-align: center;
 }
 
 #analyze-section h2 {
-    padding-top: 20px;
-    padding-left: 20px;
-    margin-left: 40px;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #111827;
 }
 
 #analyze-section h3 {
-    margin-left: 40px;
-    padding-left: 20px;
-    padding-top: 10px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: #4b5563;
 }
 
-#analyze-section h4 {
+.container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.sub-container {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sub-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.sub-container h4 {
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.sub-container img,
+.sub-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    border: 1px solid #000;
+    object-fit: cover;
+}
+
+.video-btn {
+    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    background-color: #9c9c9c88;
+    color: #e79e00;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.video-btn:hover {
+    background-color: #e79e00;
+    color: white;
+}
+
+.seek-bar {
+    width: 100%;
+    margin-top: 0.75rem;
+    appearance: none;
+    height: 6px;
+    background: #61616173;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.seek-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #e79e00;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.seek-bar::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #1c2531;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ---------------------------- Analyze Feature End  ------------------------------ */
+
+/* --------------------------- Compare Feature Start  ----------------------------- */
+
+#compare-section {
+    padding: 4rem 2rem;
+    background-color: #a79a7e75; 
     text-align: center;
-    /* text-decoration: underline; */
-    padding-bottom: 20px;
 }
 
-#analyze-section img {
-    width: 70%;
-    border-radius: 15px;
-    box-shadow: 10px 10px 54px rgba(70, 62, 221, 0.1);
+#compare-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #111827;
 }
 
-#analyze-section video {
-    width: 70%;
-    border-radius: 15px;
-    box-shadow: 10px 10px 54px rgba(70, 62, 221, 0.1);
+#compare-section h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: #4b5563;
 }
 
-#analyze-section .sub-container {
+/* --------------------------- Compare Feature End  ----------------------------- */
+
+/* ------------------------- Community Feature Start  --------------------------- */
+
+#community-section {
+    padding: 4rem 2rem;
+    background-color: #a79a7e75; 
+    text-align: center;
+}
+
+#community-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+#community-section h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: #4b5563;
+}
+
+/* -------------------------- Community Feature End  ---------------------------- */
+
+/* ------------------------------- Footer Start  -------------------------------- */
+
+footer {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 40px 20px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+footer .container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    box-shadow: 10px 10px 54px rgba(70, 62, 221, 0.1);
-    border-radius: 22px;
-    background-color: #f1c76b9c;;
+    max-width: 90%;
+    margin: auto;
+    gap: 40px;
 }
+
+.footer-sub-section {
+    flex: 1 1 150px;
+    min-width: 180px;
+    margin-bottom: 10px;
+    margin-right: 40px;
+}
+
+.footer-sub-section img {
+    max-width: 120px;
+    margin-bottom: 10px;
+}
+
+.footer-sub-section h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.footer-sub-section a {
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    margin: 6px 0;
+    transition: color 0.3s ease;
+}
+
+.footer-sub-section a:hover {
+    color: #8d4400;
+}
+
+footer .copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-sub-section {
+        margin-bottom: 20px;
+    }
+}
+
+/* ------------------------------ Footer End  --------------------------------- */
