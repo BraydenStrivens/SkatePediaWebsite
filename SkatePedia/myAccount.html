@@ -9,6 +9,8 @@
     <script src="https://kit.fontawesome.com/dde4619a0f.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- ----------------------------------- Header Start ------------------------------  -->
+
     <section id="header">
         <div id="app-logo">
             <a href="#"><img src="images/app_logo.png" class="logo" alt=""></a>
@@ -21,9 +23,40 @@
                 <li><a class="active" href="myAccount.html">My Account</a></li>
                 <li><a href="privacyPolicy.html">Privacy Policy</a></li>
                 <li><a href="termsOfService.html">Terms of Service</a></li>
-                <li id="login-button"><a href="login.html"><i class="fa-solid fa-user"></i></a></li>
+                <li id="openLoginModal"><a href="#"><i class="fa-solid fa-user"></i></a></li>
             </ul>
         </div>
     </section>
+
+    <!-- ------------------------------------ Header End -------------------------------  -->
+
+    <!-- Login Popup -->
+    <div id="loginModal" class="modal"></div>
+
+    <!-- -------------------------------- Login Message Start --------------------------  -->
+
+    <section id="loginMessage" style="display: none;">
+        <h2>Login to view your account information.</h2>
+    </section>
+
+    <!-- --------------------------------- Login Message End ---------------------------  -->
+
+    <!-- ------------------------------ User Account Info Start ------------------------  -->
+
+    <section id="userInfoSection" style="display: none;">
+        <div class="profile-card">
+            <img class="profile-photo" src="" alt="">
+            <p id="myAccountUsername"></p>
+            <p id="userEmail"></p>
+            <p id="userStance"></p>
+            <p id="userBio"></p>
+            <p id="userDateCreated"></p>
+        </div>
+
+    </section>
+
+    <!-- -------------------------------- User Account Info End ------------------------  -->
+
+    <script type="module" src="script.js"></script>
 </body>
 </html>

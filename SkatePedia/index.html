@@ -7,22 +7,8 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/dde4619a0f.js" crossorigin="anonymous"></script>
-
-    <!-- update the version number as needed
-    <script defer src="/__/firebase/11.8.1/firebase-app-compat.js"></script>
-     include only the Firebase features as you need -->
-    <!-- <script defer src="/__/firebase/11.8.1/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.8.1/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.8.1/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.8.1/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.8.1/firebase-storage-compat.js"></script> -->
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <!-- <script defer src="/__/firebase/init.js?useEmulator=false"></script>  -->
-
   </head>
+  
   <body>
     <!-- ------------------------------------ Header Start -----------------------------  -->
 
@@ -38,14 +24,15 @@
                 <li><a href="myAccount.html">My Account</a></li>
                 <li><a href="privacyPolicy.html">Privacy Policy</a></li>
                 <li><a href="termsOfService.html">Terms of Service</a></li>
-                <li id="login-button"><a href="login.html"><i class="fa-solid fa-user"></i></a></li>
+                <li id="openLoginModal"><a href="#"><i class="fa-solid fa-user"></i></a></li>
             </ul>
         </div>
-        
-
     </section>
 
     <!-- ------------------------------------ Header End -------------------------------  -->
+
+    <!-- Login Popup -->
+    <div id="loginModal" class="modal"></div>
 
     <!-- ------------------------------------ Hero Start -------------------------------  -->
 
@@ -56,6 +43,7 @@
 
     <!-- ------------------------------------ Hero End -------------------------------  -->
 
+    <!-- Features Header -->
     <section id="features">
         <h1>App Features</h1>
     </section>
@@ -237,6 +225,6 @@
         }
     </script>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>

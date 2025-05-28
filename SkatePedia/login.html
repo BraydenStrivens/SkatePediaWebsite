@@ -1,56 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/dde4619a0f.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <section id="header">
-        <div id="app-logo">
-            <a href="#"><img src="images/app_logo.png" class="logo" alt=""></a>
-            <h1>SkatePedia</h1>
-        </div>
+<div class="modal-content">
+    <span id="closeButton" class="close">&times;</span>
 
-        <div>
-            <ul id="navigation-buttons">
-                <li><a href="index.html">About</a></li>
-                <li><a href="myAccount.html">My Account</a></li>
-                <li><a href="privacyPolicy.html">Privacy Policy</a></li>
-                <li><a href="termsOfService.html">Terms of Service</a></li>
-                <li id="login-button"><a class="active" href="login.html"><i class="fa-solid fa-user"></i></a></li>
-            </ul>
-        </div>
-    </section>
+    <div id="loginBox">
+        <h2>Login</h2>
 
-    <section id="login-section">
-        <div id="login-box">
-            <h2>Login</h2>
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
 
-            <input type="email" id="email" placeholder="Email" required />
-            <input type="password" id="password" placeholder="Password" required />
+        <button type="submit" id="loginButton">Login</button>
+        <p><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
+        <p>To create an account, download the app from the Appstore.</p>
 
-            <button id="loginButton">Login</button>
-            <p><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
-            <p>To create an account download the app from the Appstore.</p>
+        <div id="message"></div>
+    </div>
 
-            <div id="message"></div>
-        </div>
+    <div id="logoutBox" style="display: none;">
+        <p>Welcome Back,</p>
+        <img class="profile-photo" src="" alt="">
+        <div id="popupUsername"></div>
+        <p>To view your account, navgivate to the 'My Account' page.</p>
 
-        <div id="logout-box" style="display: none;">
-            <p>Welcome Back,</p>
-            <div id="username"></div>
-            <p>To view your account navgivate to the 'My Account' page.</p>
-
-            <button id="logoutButton" >Logout</button>
-            <div id="message"></div>
-        </div>
-        
-    </section>
-
-    <script type="module" src="script.js"></script>
-</body>
-</html>
+        <button type="submit" id="logoutButton">Logout</button>
+        <div id="message"></div>
+    </div>
+</div>
