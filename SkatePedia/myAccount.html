@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/dde4619a0f.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <!-- ----------------------------------- Header Start ------------------------------  -->
 
@@ -43,20 +45,79 @@
 
     <!-- ------------------------------ User Account Info Start ------------------------  -->
 
-    <section id="userInfoSection" style="display: none;">
-        <div class="profile-card">
-            <img class="profile-photo" src="" alt="">
-            <p id="myAccountUsername"></p>
-            <p id="userEmail"></p>
-            <p id="userStance"></p>
-            <p id="userBio"></p>
-            <p id="userDateCreated"></p>
-        </div>
+    <div id="accountInfoContainer" style="display: none;">
 
-    </section>
+        <h2>Account Info</h2>
+        <section id="userInfoSection" class="account-sub-container">
+
+
+            <div class="profile-card">
+                <img class="profile-photo" src="" alt="">
+                <p id="myAccountUsername"></p>
+                <p id="userEmail"></p>
+                <p id="userStance"></p>
+                <p id="userBio"></p>
+                <p id="userDateCreated"></p>
+            </div>
+
+            <div class="account-settings">
+                <p id="changePassword">Change Password</p>
+                <p id="deleteAccount" style="color: red">Delete Account</p>
+            </div>
+        </section>
+
+        <h2>Trick Progress</h2>
+        <section id="trickProgressSection" class="account-sub-container">
+
+            <div class="trick-list-header">
+                <p><b>Total:</b></p>
+                <p id="totalTricksCounter"></p>
+            </div>
+            <progress id="totalProgress" class="progress-bar" value="50" max="100"></progress>
+
+            <hr>
+
+            <div class="trick-progress-by-stance">
+                <div id="regularTricks" class="trick-list">
+                    <div class="trick-list-header">
+                        <p><b>Regular:</b></p>
+                        <p id="regularTricksCounter"></p>
+                    </div>
+
+                    <progress id="regularProgress" class="progress-bar" value="30" max="100"></progress>
+                </div>
+
+                <div id="fakieTricks" class="trick-list">
+                    <div class="trick-list-header">
+                        <p><b>Fakie:</b></p>
+                        <p id="fakieTricksCounter"></p>
+                    </div>
+                    <progress id="fakieProgress" class="progress-bar" value="40" max="100"></progress>
+                </div>
+
+                <div id="switchTricks" class="trick-list">
+                    <div class="trick-list-header">
+                        <p><b>Switch:</b></p>
+                        <p id="switchTricksCounter"></p>
+                    </div>
+                    <progress id="switchProgress" class="progress-bar" value="60" max="100"></progress>
+                </div>
+
+                <div id="nollieTricks" class="trick-list">
+                    <div class="trick-list-header">
+                        <p><b>Nollie:</b></p>
+                        <p id="nollieTricksCounter"></p>
+                    </div>
+                    <progress id="nollieProgress" class="progress-bar" value="20" max="100"></progress>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
     <!-- -------------------------------- User Account Info End ------------------------  -->
 
     <script type="module" src="script.js"></script>
 </body>
+
 </html>

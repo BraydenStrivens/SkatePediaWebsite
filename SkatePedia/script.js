@@ -43,6 +43,11 @@ function setupLoginUI() {
   // Updates HTML elements with the user's information if it exists in storage
   if (localStorage.getItem('username')) {
     setUserData();
+
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      fetchUserTrickListInfo(db, userId);
+    }
   }
 
 
@@ -166,8 +171,8 @@ function login(auth, email, password, message, db, storage) {
             console.error("Error Fetching Profile Photo...", error);
           });
 
-          // Sets the user data after login
-          setUserData();
+        // Sets the user data after login
+        setUserData();
       } else {
         console.log("No such user document!");
       }
@@ -204,7 +209,7 @@ function logout(auth, message) {
 
 function setUserData() {
   const usernameBox1 = document.getElementById("myAccountUsername");
-  const usernameBox2 = document.getElementById("popupUsername"); 
+  const usernameBox2 = document.getElementById("popupUsername");
   const emailTextBox = document.getElementById("userEmail");
   const stanceTextBox = document.getElementById("userStance");
   const bioTextBox = document.getElementById("userBio");
@@ -251,7 +256,7 @@ function updateLoginPopupDisplay(user) {
   const loginBox = document.getElementById("loginBox");
   const logoutBox = document.getElementById("logoutBox");
   const loggedOutPage = document.getElementById("loginMessage");
-  const loggedInPage = document.getElementById("userInfoSection");
+  const loggedInPage = document.getElementById("accountInfoContainer");
 
   if (user) {
     // Hides the login box and shows the logout box
@@ -261,7 +266,7 @@ function updateLoginPopupDisplay(user) {
     if (loggedOutPage) loggedOutPage.style.display = "none";
     if (loggedInPage) loggedInPage.style.display = "flex";
 
-    
+
   } else {
     // Shows the login box and hides the logout box
     if (loginBox) loginBox.style.display = "block";
@@ -271,3 +276,63 @@ function updateLoginPopupDisplay(user) {
     if (loggedInPage) loggedInPage.style.display = "none";
   }
 };
+
+async function fetchUserTrickListInfo(db, userId) {
+  // Fetches user document from firebase database
+  const userRef = doc(db, "trick_list_info", `${userId}`);
+  const docSnapshot = await getDoc(userRef);
+
+  if (docSnapshot.exists()) {
+    const trickListInfo = docSnapshot.data();
+
+    const regularTricks = trickListInfo.regular_tricks;
+    const fakieTricks = trickListInfo.fakie_tricks;
+    const switchTricks = trickListInfo.switch_tricks;
+    const nollieTricks = trickListInfo.nollie_tricks;
+    const totalTricks = trickListInfo.total_tricks;
+
+    const learnedRegularTricks = trickListInfo.learned_regular_tricks;
+    const learnedFakieTricks = trickListInfo.learned_fakie_tricks;
+    const learnedSwitchTricks = trickListInfo.learned_switch_tricks;
+    const learnedNollieTricks = trickListInfo.learned_nollie_tricks;
+    const learnedTotalTricks = trickListInfo.learned_tricks;
+
+    const regularTricksCounter = document.getElementById("regularTricksCounter");
+    const fakieTricksCounter = document.getElementById("fakieTricksCounter");
+    const switchTricksCounter = document.getElementById("switchTricksCounter");
+    const nollieTricksCounter = document.getElementById("nollieTricksCounter");
+    const totalTricksCounter = document.getElementById("totalTricksCounter");
+
+    const regularProgressBar = document.getElementById("regularProgress");
+    const fakieProgressBar = document.getElementById("fakieProgress");
+    const switchProgressBar = document.getElementById("switchProgress");
+    const nollieProgressBar = document.getElementById("nollieProgress");
+    const totalProgressBar = document.getElementById("totalProgress");
+
+    regularTricksCounter.innerHTML = `${learnedRegularTricks} / ${regularTricks}`;
+    regularProgressBar.max = regularTricks;
+    regularProgressBar.value = learnedRegularTricks;
+
+    fakieTricksCounter.innerHTML = `${learnedFakieTricks} / ${fakieTricks}`;
+    fakieProgressBar.max = fakieTricks;
+    fakieProgressBar.value = learnedFakieTricks;
+
+    switchTricksCounter.innerHTML = `${learnedSwitchTricks} / ${switchTricks}`;
+    switchProgressBar.max = switchTricks;
+    switchProgressBar.value = learnedSwitchTricks;
+
+    nollieTricksCounter.innerHTML = `${learnedNollieTricks} / ${nollieTricks}`;
+    nollieProgressBar.max = nollieTricks;
+    nollieProgressBar.value = learnedNollieTricks;
+
+    totalTricksCounter.innerHTML = `${learnedTotalTricks} / ${totalTricks}`;
+    totalProgressBar.max = totalTricks;
+    totalProgressBar.value = learnedTotalTricks;
+
+
+    console.log(trickListInfo);
+
+  } else {
+    console.log("No such trick list info document!");
+  }
+}
