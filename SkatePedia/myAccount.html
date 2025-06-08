@@ -62,7 +62,7 @@
 
             <div class="account-settings">
                 <p id="changePassword">Change Password</p>
-                <p id="deleteAccount" style="color: red">Delete Account</p>
+                <!-- <p id="deleteAccount" style="color: red">Delete Account</p> -->
             </div>
         </section>
 
@@ -112,6 +112,17 @@
                 </div>
             </div>
         </section>
+
+        <div id="updatePasswordModal">
+            <div id="updatePasswordContainer">
+                <span id="changePasswordClose" class="close">&times;</span>
+
+                <h2>Update Password</h2>
+                <input type="password" id="newPassword" placeholder="New Password" required />
+                <button type="submit" id="changePasswordButton">Change Password</button>
+                <h3 id="changePasswordErrorMessage" style="color: #ce0000;"></h3>
+            </div>
+        </div>
 
     </div>
 

@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", event => {
   // 'My Account' page elements ----------------------------------------------------------------------------
   const loggedOutPage = document.getElementById("loginMessage");
   const loggedInPage = document.getElementById("userInfoSection");
+  const openChangePasswordButton = document.getElementById("changePassword");
+  const changePasswordPopup = document.getElementById("updatePasswordModal");
   const profilePhotoUrl = document.getElementById("profilePhoto");
   const usernameTextBox = document.getElementById("userUsername");
   const emailTextBox = document.getElementById("userEmail");
@@ -169,6 +171,14 @@ document.addEventListener("DOMContentLoaded", event => {
         message.style.color = "red";
       });
   });
+
+  if (openChangePasswordButton) {
+    openChangePasswordButton.addEventListener("click", () => {
+      console.log("CLICKED")
+      changePasswordPopup.style.display = "flex";
+    });
+  }
+  
 
   // Updates the pop up whether the user is logged in or logged out
   onAuthStateChanged(auth, (user) => {

@@ -407,7 +407,6 @@ footer .copyright {
     inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(3px);
-    /* display: flex; */
     align-items: center;
     justify-content: center;
 }
@@ -672,6 +671,66 @@ footer .copyright {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#updatePasswordModal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    align-items: center;
+    justify-content: center;
+}
+
+#updatePasswordContainer {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 30px 20px 30px 20px;
+    border-radius: 15px;
+    width: 400px;
+    animation: slideDown 0.3s ease-out;
+}
+
+#closePopupButton {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 30px;
+    right: 0; 
+}
+
+#updatePasswordModal input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+#updatePasswordModal button {
+    width: 80%;
+    padding: 12px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #cf911d;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+#updatePasswordModal button:hover {
+    background-color: #915e00;
 }
 
 /* -------------------------- My Account End ------------------------------- */

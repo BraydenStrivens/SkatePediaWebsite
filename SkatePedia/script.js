@@ -1,6 +1,6 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail, updatePassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
 
@@ -37,8 +37,15 @@ function setupLoginUI() {
   const closeButton = document.getElementById("closeButton");
   const loginButton = document.getElementById("loginButton");
   const logoutButton = document.getElementById("logoutButton");
+
   const message = document.getElementById("message");
   const forgotPasswordLink = document.getElementById("forgotPasswordLink");
+
+  const openChangePasswordButton = document.getElementById("changePassword");
+  const closeChangePasswordButton = document.getElementById("changePasswordClose");
+  const changePasswordPopup = document.getElementById("updatePasswordModal");
+  const changePasswordButton = document.getElementById("changePasswordButton");
+  const changePasswordMessage = document.getElementById("changePasswordErrorMessage")
 
   // Updates HTML elements with the user's information if it exists in storage
   if (localStorage.getItem('username')) {
@@ -92,6 +99,31 @@ function setupLoginUI() {
     logoutButton.addEventListener("click", () => {
       logout(auth, message);
     });
+  }
+
+  if (openChangePasswordButton) {
+    const newPassword = document.getElementById("newPassword");
+
+    openChangePasswordButton.addEventListener("click", () => {
+      changePasswordPopup.style.display = "flex";
+      changePasswordMessage.textContent = "";
+    });
+
+    // if (changePasswordButton) {
+    //   changePasswordButton.addEventListener("click", changePassword(auth, changePasswordMessage));
+    // }
+
+    if (changePasswordButton) {
+      changePasswordButton.addEventListener("click", () => {
+        changePassword(auth, changePasswordMessage, newPassword.value)
+      });
+    }
+
+    closeChangePasswordButton.addEventListener("click", () => {
+      changePasswordPopup.style.display = "none";
+      changePasswordMessage.textContent = "";
+      newPassword.value = "";
+    })
   }
 
   onAuthStateChanged(auth, (user) => {
@@ -154,33 +186,23 @@ function login(auth, email, password, message, db, storage) {
         localStorage.setItem('bio', currentUser.bio);
         localStorage.setItem('stance', currentUser.stance);
         localStorage.setItem('dateCreated', readableDate);
-        localStorage.setItem('photoUrl', currentUser.profile_pic_url);
 
-        // Fetches the user's profile photo from firebase's storage
-        const imageRef = ref(storage, currentUser.profile_pic_url);
-
-        getDownloadURL(imageRef)
-          .then((url) => {
-            // Stores the photo url in local storage
-            localStorage.setItem('photoUrl', url);
-
-            // Updates the HTML IMG element's SRCs with the fetched photo url
-            document.querySelectorAll(".profile-photo").forEach((el) => el.src = url);
-          })
-          .catch((error) => {
-            console.error("Error Fetching Profile Photo...", error);
-          });
+        if (currentUser.profile_pic_url === "") {
+          localStorage.setItem('photoUrl', "images/default_profile_image.jpg");
+        } else {
+          localStorage.setItem('photoUrl', currentUser.profile_pic_url);
+        }
 
         // Sets the user data after login
         setUserData();
+
       } else {
-        console.log("No such user document!");
+        message.textContent = "Failed to fetch user info."
       }
     })
     .catch((error) => {
       if (message) {
-        message.textContent = "Login failed: " + error.message;
-        message.style.color = "red";
+        message.textContent = loginErrorMessage(error.code, email);
       }
     });
 }
@@ -244,8 +266,12 @@ function setUserData() {
   if (stanceTextBox && stance) {
     stanceTextBox.innerHTML = "<b>Stance: </b>" + stance;
   }
-  if (bioTextBox && bio) {
-    bioTextBox.innerHTML = "<b>Bio: </b>" + bio;
+  if (bioTextBox) {
+    if (bio) {
+      bioTextBox.innerHTML = "<b>Bio: </b>" + bio;
+    } else {
+      bioTextBox.innerHTML = "<b>Bio: </b>";
+    }
   }
   if (dateCreatedTextBox && dateCreated) {
     dateCreatedTextBox.innerHTML = "<b>DateCreated: </b>" + dateCreated;
@@ -329,10 +355,53 @@ async function fetchUserTrickListInfo(db, userId) {
     totalProgressBar.max = totalTricks;
     totalProgressBar.value = learnedTotalTricks;
 
-
-    console.log(trickListInfo);
-
   } else {
     console.log("No such trick list info document!");
   }
+}
+
+function changePassword(auth, message, newPassword) {
+  const user = auth.currentUser;
+
+  if (newPassword !== "") {
+    updatePassword(user, newPassword)
+    .then(() => {
+      message.textContent = "Password Successfully Updated"
+    })
+    .catch((error) => {
+      message.textContent = changePasswordErrorMessage(error.code);
+    })
+
+  } else {
+    message.textContent = "Please enter a new password."
+  }
+}
+
+function loginErrorMessage(errorType, email) {
+  switch (errorType) {
+    case "auth/user-not-found":
+      return `There are no registered users with the email: ${email}.`
+      
+    case "auth/wrong-password":
+      return `Incorrect password for the account registered with the email: ${email}.`
+
+    case "auth/invalid-credential":
+      return "Invalid email or password."
+
+    default:
+      return "Error."
+  }
+}
+
+function changePasswordErrorMessage(errorType) {
+  switch (errorType) {
+    case "auth/weak-password": 
+      return "Password must be at least 6 characters long.";
+
+    case "auth/requires-recent-login":
+      return "Sensitive operations require the user to have recently logged in. Please log out and log back in to change your password."
+
+    default:
+      return "Error."
+  } 
 }
