@@ -13,6 +13,18 @@ document.addEventListener("DOMContentLoaded", event => {
 
       // Sets up the login UI after the popup is embedded
       setupLoginUI();
+
+      // Mobile menu toggle
+      document.getElementById('bar').addEventListener('click', () => {
+          const nav = document.getElementById('navigation-buttons');
+          nav.classList.toggle('active');
+      });
+
+      // Mobil menu close button
+      document.getElementById("close-btn").addEventListener('click', () => {
+          const nav = document.getElementById('navigation-buttons');
+          nav.classList.toggle('active');
+      })
     });
 });
 

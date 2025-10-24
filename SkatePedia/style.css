@@ -67,6 +67,10 @@ hr {
     height: 12vh;
 }
 
+#header #mobile {
+    display: none;
+}
+
 #app-logo {
     display: flex;
     align-items: center;
@@ -82,6 +86,10 @@ hr {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+#navigation-buttons #close-btn {
+    display: none;
 }
 
 #navigation-buttons li {
@@ -232,10 +240,6 @@ hr {
     max-width: 800px;
     margin: 0 auto 3rem;
     color: #4b5563;
-}
-
-.comment-preview-container {
-    width: 312px;
 }
 
 /* -------------------------- Community Feature End  ---------------------------- */
@@ -734,3 +738,183 @@ footer .copyright {
 }
 
 /* -------------------------- My Account End ------------------------------- */
+
+@media (max-width: 576px) {
+
+    #header #mobile {
+        display: flex;
+    }
+
+    #header #mobile #bar {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    h1 {
+        font-size: 30px;
+        line-height: 40px;
+        color: #222;
+    }
+
+    h2 {
+        font-size: 22px;
+        line-height: 25px;
+        color: #222;
+    }
+
+    h4 {
+        font-size: 20px;
+        color: #222;
+    }
+
+    h6 {
+        font-weight: 700;
+        font-size: 12px;
+    }
+
+    p {
+        font-size: 16px;
+        color: #465b52;
+        margin: 15px 0 20px 0;
+    }
+
+    #header {
+        padding: 20px 20px;
+        width: 100vw;
+        padding-left: 10px;
+    }
+
+    #header img {
+        width: 75px;
+        height: 75px;
+        
+    }
+
+    #navigation-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: absolute;
+        top: 0;
+        right: -300px;
+        height: 100vh;
+        width: 200px;
+        background-color: #E3E6F3;
+        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.3);
+        padding: 80px 0 0 20px;
+        transition: 0.3s;
+        margin: 0;
+    }
+
+    #navigation-buttons.active {
+        right: 0px;
+    }
+
+    #navigation-buttons li {
+        margin-bottom: 25px;
+        margin-left: 0;
+    }
+
+    #navigation-buttons #close-btn {
+        display: flex;
+    }
+
+    #mobile {
+        display: flex;
+        align-items: center;
+    }
+
+    #hero {
+        height: 40vh;
+        justify-content: end;
+    }
+
+    #hero h1 {
+        font-size: 25px;
+        width: 65%;
+        margin-left: 0;
+    }
+
+    #hero h5 {
+        font-size: 14px;
+        margin-left: 0;
+        padding-top: 0;
+    }
+
+    #features {
+        padding: 20px;
+    }
+
+    #features h1 {
+        font-size: 30px;
+    }
+
+    #analyze-section {
+        padding: 3rem 2rem;
+    }
+
+    #analyze-section h2 {
+        font-size: 1.8rem;
+        line-height: 2rem;
+    }
+
+    #analyze-section h3 {
+        font-size: 1rem;
+    }
+
+    #analyze-section .sub-container {
+        max-height: 80vh;
+        width: auto;
+    }
+
+    .sub-container img,
+    .sub-container video {
+        width: auto;
+        max-height: 60vh;
+        object-fit:contain;
+    }
+
+    #compare-section {
+        padding: 3rem 2rem;
+    }
+
+    #compare-section h2 {
+        font-size: 1.8rem;
+        line-height: 2rem;
+    }
+
+    #compare-section h3 {
+        font-size: 1rem;
+    }
+
+    #community-section h2 {
+        font-size: 1.8rem;
+        line-height: 2rem;
+    }
+
+    #community-section h3 {
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 30px 20px 20px;
+    }
+
+    footer .footer-sub-section {
+        margin: 0;
+        height: auto;
+    }
+
+    footer .container {
+        align-items: flex-start;
+        text-align: start;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    footer img {
+        max-width: 100px;
+        margin: 0;
+    }
+}
