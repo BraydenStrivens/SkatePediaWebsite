@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkatePedia</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link rel="stylesheet" href="/css/globalStyles.css">
+  <link rel="stylesheet" href="/css/indexStyle.css">
+  <script src="https://kit.fontawesome.com/dde4619a0f.js" crossorigin="anonymous"></script>
+  <script src="/js/globalScripts.js" defer></script>
+  <script src="/js/videoPlayer.js" defer></script>
+</head>
+
+<body>
+  <!-- Navigation Bar Start -->
+  <div class="navbar-wrapper">
+    <img src="assets/app_logo.png" alt="SkatePedia Logo">
+    <img class="logo-text" src="assets/app_logo_text.png" alt="SkatePedia">
+    <button id="openNavbarButton" onclick="openNavbar()"><i class="fa fa-bars" aria-hidden="true"></i></i></button>
+
+    <nav id="navbar">
+      <ul>
+        <li id="closeNavbarButton"><a href="#" class="nav-bar-item" onclick="closeNavbar()"><i class="fa fa-times"
+              aria-hidden="true"></i></a></li>
+        <li class="home-li"><a class="active" href="index.html">Home</a></li>
+        <li><a href="/pages/about.html">About</a></li>
+        <li><a href="/pages/privacyPolicy.html">Privacy Policy</a></li>
+        <li><a href="/pages/termsOfService.html">Terms of Service</a></li>
+        <li><a href="/pages/myAccount.html">Login</a></li>
+      </ul>
+    </nav>
+
+    <div id="overlay" aria-hidden="true"></div>
+  </div>
+
+  <!-- Navigation Bar End -->
+
+  <!-- Hero Start -->
+  <main>
+    <h1>Simplify the Skateboarding Learning Process with <span>SkatePedia</span></h1>
+    <h4>Available on the App Store in the United States</h4>
+  </main>
+  <!-- Hero End -->
+
+  <!-- App Features Preview  Start-->
+  <div class="features-banner">
+    <h2>App Features</h2>
+  </div>
+
+  <section id="analyzeSection">
+    <h2>Analyze Your Skateboarding</h2>
+    <h4>Upload your skate videos to the app to analyze frame-by-frame and in slow motion. Note your insights to remember
+      for future attempts.</h4>
+
+    <div class="preview-wrapper">
+      <div class="preview">
+        <h3>Upload Videos</h3>
+        <img src="../assets/preview_images/trick_item_preview.png" alt="Trick Item Preview">
+      </div>
+
+      <div class="preview">
+        <h3>Slow Motion Analysis</h3>
+        <video id="slowMoVideo" src="../assets/preview_videos/slow_mo_preview.mp4" muted></video>
+
+        <div class="video-controls">
+          <button onclick="toggleVideo('slowMoVideo', this)" class="video-btn" data-state="paused"><i
+              class="fa-solid fa-play"></i></button>
+          <input type="range" id="slowMoVideoSeek" value="0" step="0.1" onchange="seekVideo('slowMoVideo', this)">
+        </div>
+      </div>
+
+      <div class="preview">
+        <h3>Frame-by-Frame Analysis</h3>
+        <video id="frameByFrameVideo" src="../assets/preview_videos/frame_by_frame_preview.mp4" muted></video>
+
+        <div class="video-controls">
+          <button onclick="toggleVideo('frameByFrameVideo', this)" class="video-btn" data-state="paused"><i
+              class="fa-solid fa-play"></i></button>
+          <input type="range" id="frameByFrameVideoSeek" value="0" step="0.1"
+            onchange="seekVideo('frameByFrameVideo', this)">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compareSection">
+    <h2>Compare to Professional Skateboarders</h2>
+    <h4>Compare your trick attempts to pro skaters to figure out what you're doing wrong.</h4>
+
+    <div class="preview-wrapper">
+      <div class="preview">
+        <h3>Pro Skaters</h3>
+        <video id="proSkatersVideo" src="../assets/preview_videos/pro_skaters_preview.mp4" muted></video>
+
+        <div class="video-controls">
+          <button onclick="toggleVideo('proSkatersVideo', this)" class="video-btn" data-state="paused"><i
+              class="fa-solid fa-play"></i></button>
+          <input type="range" id="proSkatersVideoSeek" value="0" step="0.1"
+            onchange="seekVideo('proSkatersVideo', this)">
+        </div>
+      </div>
+
+      <div class="preview">
+        <h3>Compare to Pro Skaters</h3>
+        <video id="proComparePreview" src="../assets/preview_videos/pro_compare_preview.mp4" muted></video>
+
+        <div class="video-controls">
+          <button onclick="toggleVideo('proComparePreview', this)" class="video-btn" data-state="paused"><i
+              class="fa-solid fa-play"></i></button>
+          <input type="range" id="proComparePreviewSeek" value="0" step="0.1"
+            onchange="seekVideo('proComparePreview', this)">
+        </div>
+      </div>
+
+      <div class="preview">
+        <h3>Compare to Your Past Self</h3>
+        <video id="selfComparePreview" src="../assets/preview_videos/self_compare_preview.mp4" muted></video>
+
+        <div class="video-controls">
+          <button onclick="toggleVideo('selfComparePreview', this)" class="video-btn" data-state="paused"><i
+              class="fa-solid fa-play"></i></button>
+          <input type="range" id="selfComparePreviewSeek" value="0" step="0.1"
+            onchange="seekVideo('selfComparePreview', this)">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="communitySection">
+    <h2>Engage with a Community</h2>
+    <h4>Post your trick attempts to the community to receive advice from other users. Direct message other users to
+      share your insights about skateboarding.</h4>
+
+    <div class="preview-wrapper">
+      <div class="preview">
+        <h3>Upload Posts to Receive Advice</h3>
+        <video id="commentPreview" src="../assets/preview_videos/comment_preview.mp4" muted></video>
+
+        <div class="video-controls">
+          <button onclick="toggleVideo('commentPreview', this)" class="video-btn" data-state="paused"><i
+              class="fa-solid fa-play"></i></button>
+          <input type="range" id="commentPreviewSeek" value="0" step="0.1" onchange="seekVideo('commentPreview', this)">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- App Features Preview  Start-->
+
+  <!-- Footer Start -->
+  <footer>
+    <div class="footer-wrapper">
+      <div class="footer-section">
+        <img src="assets/app_logo.png" alt="">
+        <p>©SkatePedia</p>
+      </div>
+
+
+
+      <div class="footer-section">
+        <h4>Home</h4>
+
+        <a href="#analyzeSection">Analyze Your Skating</a>
+        <a href="#compareSection">Compare with Pros</a>
+        <a href="#communitySection">Engage with Community</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>About</h4>
+
+        <a href="/pages/about.html">About SkatePedia</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Account</h4>
+
+        <a href="/pages/myAccount.html">My Account</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Information</h4>
+
+        <a href="/pages/privacyPolicy.html">Privacy Policy</a>
+        <a href="/pages/termsOfService.html">Terms of Service</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact</h4>
+
+        <a href="mailto:skatepediaiosapp@gmail.com">skatepediaiosapp@gmail.com</a>
+      </div>
+    </div>
+
+  </footer>
+</body>
+
+</html>

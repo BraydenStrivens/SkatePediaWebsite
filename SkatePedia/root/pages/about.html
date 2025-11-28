@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkatePedia</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link rel="stylesheet" href="/css/globalStyles.css">
+  <link rel="stylesheet" href="/css/aboutStyle.css">
+  <script src="https://kit.fontawesome.com/dde4619a0f.js" crossorigin="anonymous"></script>
+  <script src="/js/globalScripts.js" defer></script>
+</head>
+
+<body>
+  <!-- Navigation Bar Start -->
+  <div class="navbar-wrapper">
+    <img src="../assets/app_logo.png" alt="SkatePedia Logo">
+    <img class="logo-text" src="../assets/app_logo_text.png" alt="SkatePedia">
+    <button id="openNavbarButton" onclick="openNavbar()"><i class="fa fa-bars" aria-hidden="true"></i></i></button>
+
+    <nav id="navbar">
+      <ul>
+        <li id="closeNavbarButton"><a href="#" class="nav-bar-item" onclick="closeNavbar()"><i class="fa fa-times"
+              aria-hidden="true"></i></a></li>
+        <li class="home-li"><a href="../index.html">Home</a></li>
+        <li><a class="active" href="about.html">About</a></li>
+        <li><a href="privacyPolicy.html">Privacy Policy</a></li>
+        <li><a href="termsOfService.html">Terms of Service</a></li>
+        <li><a href="myAccount.html">Login</a></li>
+      </ul>
+    </nav>
+
+    <div id="overlay" onClick="closeSidebar()" aria-hidden="true"></div>
+  </div>
+  <!-- Navigation Bar End -->
+
+  <main>
+    <section>
+      <h1>About Me</h1>
+      <p>
+        I graduated in Spring of 2025 with a degree in Computer Science, and <span>SkatePedia</span> was my project for
+        my senior capstone class.
+        I have been skateboarding for over ten years and have managed to learn 95 out of the 100 tricks featured in this
+        app. I am still
+        an inexperienced programmer so if you find any problems with the app or have any ideas to improve it, please
+        don't hesitate
+        to contact me using either of the contact methods below. Thank you to everyone who downloaded the app and I hope
+        it helps you
+        learn new tricks!
+      </p>
+      <div class="contact-methods-wrapper">
+        <div class="row">
+          <p>Email:</p>
+          <p>bdstrivens@gmail.com</p>
+          <a href="#" class="fa fa-envelope" aria-hidden="true"></a>
+        </div>
+        <div class="row">
+          <p>Instagram:</p>
+          <p>@b_bizzlemonizzle</p>
+          <a href="#" class="fa fa-instagram" aria-hidden="true"></a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h1>About SkatePedia</h1>
+      <p>
+        The idea behind SkatePedia comes from my own process for learning new skateboard tricks. I usually
+        record myself trying a trick, watch professional skaters doing the same one, and then compare the two to figure
+        out what I'm doing wrong. SkatePedia's features are designed to make that process more organized
+        and easier to follow.
+      </p>
+      <p>
+        The main feature of SkatePedia is the <b>Trick Item</b>. Trick items allow the user to analyze their tricks and
+        track their progress. For each trick in the <b>Trick List</b>, you can
+        upload up to 15 trick items. The video in each trick item can be compared with clips of <b>Pro Skaters</b> or
+        with
+        other trick items of the same trick.
+      </p>
+      <p>
+        The built-in video player lets you slow down playback or go frame-by-frame to help with analysis. You can also
+        post your videos to the <b>Community Section</b> to get advice from other users. The app also includes
+        <b>Direct Messaging</b> so skaters can chat, share insights, and help each other progress more directly.
+      </p>
+    </section>
+
+    <section>
+      <h1>Trick List</h1>
+      <p>
+        I decided to base the app on a standardized list of 25 fundamental trick combinations, ranging from beginner to
+        advanced. A separate trick list is provided for each stance — regular, fakie, switch, and nollie. Users can also
+        add other tricks they want to learn, though pro videos won't be available for those. To simplify the UI,
+        users can remove any tricks they're not interested in learning.
+      </p>
+      <p>
+        Since skateboarding doesn't have an official governing body to define or standardize trick names, there can be
+        some inconsistencies in terminology. I wanted to minimize confusion about how tricks are labeled in the app. One
+        common source of mix-ups is the naming of fakie and nollie tricks: for example, a regular frontside flip done
+        fakie is called a fakie frontside flip, but the same trick done nollie is called a nollie backside flip. In
+        other words, “frontside” and “backside” are reversed for nollie tricks — and that's the convention I've followed
+        in naming them within the app.
+      </p>
+    </section>
+
+    <section>
+      <h1>Trick Items</h1>
+      <p>
+        Trick Items include a video of the user performing a trick, notes on areas for improvement,
+        and a satisfaction rating from 1 to 3. Each video can be compared with footage of professional 
+        skaters performing the same trick, as well as with other trick items for the same trick. 
+        Users can update their notes based on insights gained from analyzing their videos.
+      </p>
+    </section>
+
+    <section>
+      <h1>Pro Skateboarders</h1>
+      <p>
+        The videos of professional skateboarders was found mostly from Battle at the Berrics games of S.K.A.T.E as well as 
+        Instagram and video parts. Considering the way to win a game of S.K.A.T.E is to do tricks your opponent can't do,
+        I was unable to find pro videos for some of the beginner tricks as well as some of the rarely done tricks.  
+      </p>
+    </section>
+
+    <section>
+      <h1>Community Section</h1>
+      <p></p>
+    </section>
+
+    <section>
+      <h1>Direct Messaging</h1>
+      <p></p>
+    </section>
+
+    <section>
+      <h1>The Future of SkatePedia</h1>
+      <p></p>
+    </section>
+  </main>
+</body>
+
+</html>

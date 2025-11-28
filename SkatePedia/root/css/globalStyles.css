@@ -1,0 +1,379 @@
+/*
+Author: Brayden Strivens <bdstrivens@gmail.com>
+Description: Global styles used by elements on each page
+Version: 1.0.0
+*/
+
+/*
+-------------------------------------------------------------------------------
+Table of Contents:
+-------------------------------------------------------------------------------
+1.  Background Colors
+2.  Font Colors
+3.  Font Sizes
+4.  Main Content
+5.  Navigation Bar
+6.  Footer
+7.  Media Queries
+-------------------------------------------------------------------------------
+*/
+
+:root {
+  /* 1. Background Colors */
+  --background-color-100: #130903;
+  --background-color-200: #241207;
+  --accent-color: #692e0a;
+  --navbar-item-hover-background: rgba(90, 33, 0, 0.3);
+  --box-shadow-background: rgba(133, 64, 0, 0.555);
+
+  /* Button Colors  */
+  --button-color: #c76020;
+  --button-hover-color: #f88e32;
+
+  /* 2. Font Colors */
+  --text-color: #ffffff;
+  --text-accent-color: #a25425;
+  --text-accent-color-200: rgb(255, 237, 214);
+  --text-hover-color: #eeb07b;
+
+  /* 3. Font Sizes */
+  --title: clamp(2.5rem, 6vw, 4.5rem);
+  --section-header: clamp(2rem, 6vw, 3rem);
+  --navbar-text: clamp(1.2rem, 2.5vw, 1.5rem);
+  --preview-header: clamp(1.3rem, 6vw, 1.5rem);
+  --content: clamp(1rem, 3vw, 1.5rem);
+
+  --navbar-height: 100px;
+}
+
+/* 4. Main Content */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Spartan', sans-serif;
+  height: 100vh;
+  height: 100dvh;
+  overflow-x: hidden;
+  background-color: var(--background-color-100);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+h1 {
+  font-size: var(--title);
+  padding: 0 2rem;
+}
+
+h2 {
+  font-size: var(--section-header);
+  color: var(--text-accent-color);
+  padding: 0 1rem;
+}
+
+h3 {
+  font-size: var(--preview-header);
+  color: var(--text-color);
+}
+
+h4 {
+  font-size: var(--content);
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 5. Navigation Bar */
+
+.navbar-wrapper {
+  position: sticky;
+  z-index: 999;
+  display: flex;
+  width: 100%;
+  top: 0;
+  background: var(--background-color-200);
+  border-bottom: 1px solid var(--accent-color);
+  box-shadow: 0 -5px 10px 5px var(--box-shadow-background);
+}
+
+.navbar-wrapper img {
+  height: var(--navbar-height);
+  object-fit: contain;
+  background: transparent;
+}
+
+nav {
+  display: flex;
+  flex-grow: 1;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  flex-grow: 1;
+}
+
+nav ul li:last-child {
+  margin-left: auto;
+}
+
+nav li {
+  display: flex;
+}
+
+nav .home-li {
+  margin-left: auto;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+  font-size: var(--navbar-text);
+  padding: 1rem clamp(1.2rem, 2.5vw, 2rem);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--text-hover-color);
+    background: var(--navbar-item-hover-background);  
+  }
+
+  &.active {
+    color: var(--text-hover-color);
+  }
+}
+
+#openNavbarButton {
+  display: none;
+  background: none;
+  border: none;
+  margin-left: auto;
+  cursor: pointer;
+  outline: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  /* padding: 2rem; */
+  padding-inline: 2rem;
+
+  i {
+    font-size: 100%;
+  }
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    color: var(--text-hover-color);
+    background: var(--navbar-item-hover-background);
+  }
+}
+
+#closeNavbarButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  display: none;
+}
+
+/* 6. Footer */
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--background-color-200);
+  border-top: 1px solid var(--accent-color);
+  box-shadow: 0 -5px 5px -3px rgba(133, 64, 0, 0.555);
+}
+
+footer h4 {
+  color: var(--text-accent-color);
+  margin-bottom: 1rem;
+}
+
+footer a {
+  color: var(--text-hover-color);
+  
+  &:hover,
+  &:focus-visible {
+    color: var(--text-accent-color);
+  }
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+  margin: 0 auto;
+  color: var(--text-color);
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 1rem 2rem;
+}
+
+.footer-section h4 {
+  padding: 0;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+}
+
+footer img {
+  width: 100px;
+  object-fit: contain;
+}
+
+
+/* 7. Media Queries  */
+
+@media (width < 450px) or (750px < width < 1250px) {
+  .logo-text {
+    display: none;
+  }
+}
+
+@media (width < 500px) {
+  .footer-wrapper {
+    flex-direction: column;
+    margin-left: 0;
+  }
+
+  .footer-section {
+    margin-left: 0;
+  }
+}
+
+@media (width > 1920px) {
+  * {
+    font-size: 20px;
+  }
+}
+
+@media (1680px < width < 1919px) {
+  * {
+    font-size: 19px;
+  }
+}
+
+@media (1080px < width < 1559px) {
+  * {
+    font-size: 18px;
+  }
+}
+
+@media (768px < width < 1079px) {
+  * {
+    font-size: 16px;
+  }
+}
+
+@media (600px < width < 767px) {
+  * {
+    font-size: 15px;
+  }
+}
+
+@media (width < 599px) {
+  * {
+    font-size: 14px;
+  }
+}
+
+@media (width < 750px) {
+  #openNavbarButton, #closeNavbarButton {
+    display: block;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: min(15em, 90%);
+    z-index: 999;
+    transition: right 300ms ease-out;
+    background: var(--background-color-200);
+    border-left: 1px solid var(--accent-color);
+    box-shadow: 0 -5px 5px 2px var(--box-shadow-background);
+    padding: 2rem 0;
+    overflow-y: auto;
+  }
+
+  nav.show {
+    right: 0;
+  }
+
+  nav.show ~ #overlay {
+    display: block;
+  }
+
+  nav ul {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  nav a {
+    width: 100%;
+    padding-left: 2.5em;
+  }
+
+  nav a.active-link {
+    border-bottom: none;
+  }
+
+  nav .home-li {
+    margin-left: unset;
+  }
+
+  nav ul li:last-child {
+    margin-left: unset;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+  /* 1. Background Colors */
+  --background-color-100: #fdc9a9;
+  --background-color-200: #fdddc9;
+  --accent-color: #ffae7e;
+
+  /* Button Colors  */
+  --button-color: #f88e32;
+  --button-hover-color: #c76020;
+
+  --navbar-item-hover-background: rgba(252, 185, 146, 0.3);
+  --box-shadow-background: rgba(78, 38, 1, 0.555);
+
+  /* 2. Font Colors */
+  --text-color: #000000;
+  --text-accent-color: #8f4618;
+  --text-accent-color-200: rgb(146, 94, 26);
+  --text-hover-color: #e78732;
+}
+}
