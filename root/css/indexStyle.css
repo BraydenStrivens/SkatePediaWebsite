@@ -1,0 +1,233 @@
+/*
+Author: Brayden Strivens <bdstrivens@gmail.com>
+Description: Styles for the home/index page
+Version: 1.0.0
+*/
+
+/*
+-------------------------------------------------------------------------------
+Table of Contents:
+-------------------------------------------------------------------------------
+1.  Hero
+2.  Preview Sections
+3.  Image/Video Player
+4.  Media Query
+-------------------------------------------------------------------------------
+*/
+
+:root {
+  --preview-background-color: var(--accent-color);
+  --preview-border-color: rgba(194, 132, 90, 0.452);
+  --preview-button-color: var(--button-hover-color);
+  --preview-button-hover-color: var(--button-color);
+  --input-thumb-color: var(--button-hover-color);
+  --input-background-color: var(--background-color-200);
+}
+
+/* 1. Hero */
+main {
+  background-image: url("../assets/background_images/hero_background.jpg");
+  background-size: cover;
+  background-position: top 25% left 45%;
+  align-items: flex-start;
+  z-index: 1;
+}
+
+main h1, h4 {
+  padding: 1rem 2rem;
+  color: black;
+  max-width: 50%;
+}
+
+main span {
+  color: var(--text-accent-color);
+}
+
+/* 2. Preview Sections */
+
+.features-banner {
+  color: var(--text-hover-color);
+  text-align: center;
+  padding: 2rem 0;
+  background: var(--background-color-200);
+  border-top: 1px solid var(--accent-color);
+  box-shadow: 0 -5px 5px -3px rgba(133, 64, 0, 0.555);
+}
+
+.features-banner h2 {
+  color: var(--text-hover-color);
+  font-size: clamp(2rem, 8vw, 4rem);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+section h2 {
+  margin: 1rem 0;
+}
+
+section h4 {
+  color: var(--text-color);
+  max-width: 50ch;
+}
+
+.preview-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 1rem 0;
+  padding: 0 4rem;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  padding: 1rem;
+  background: var(--accent-color);
+  border-radius: 1rem;
+  border: 1px solid var(--preview-border-color);
+  box-shadow: 0 3px 10px -5px var(--box-shadow-background);
+  transition: transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.preview:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 10px -3px var(--box-shadow-background);
+}
+
+.preview h3 {
+  padding-bottom: 1rem;
+  font-size: var(--preview-header);
+  /* font-size: 1.5rem; */
+}
+
+/* 3. Image/Video Player  */
+
+.preview img,
+.preview video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.video-controls {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.video-controls button {
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  border: none;
+  background: none;
+  color: var(--preview-button-color);
+  transition: color 150ms ease-in-out;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--preview-button-hover-color);
+  }
+}
+
+.video-controls input {
+  flex-grow: 1;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+}
+
+/* Video progress bar decoration for each browser  */
+
+/* Chrome */
+.video-controls input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: var(--input-thumb-color);
+  margin-top: -6px;
+}
+
+.video-controls input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--input-background-color);
+}
+
+
+/* Firefox */
+.video-controls input::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: var(--input-thumb-color);
+  margin-top: -6px;
+}
+
+.video-controls input::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--input-background-color);
+}
+
+/* IE/Edge Legacy */
+.video-controls input::-ms-track {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: var(--input-thumb-color);
+  margin-top: -6px;
+}
+.video-controls input::-ms-fill-lower {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--input-background-color);
+}
+.video-controls input::-ms-fill-upper {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--input-background-color);
+}
+
+/* 4. Media Queries  */
+
+@media (width < 750px) {
+  main {
+    background-position: top 25% right 80%;
+    /* align-items: center; */
+    /* text-align: center; */
+  }
+
+  main h1, h4 {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --preview-border-color: rgba(150, 72, 0, 0.452);
+  }
+}
+
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkatePedia</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link rel="stylesheet" href="../css/globalStyles.css">
+  <link rel="stylesheet" href="../css/myAccountStyle.css">
+  <script src="https://kit.fontawesome.com/dde4619a0f.js" crossorigin="anonymous"></script>
+  <script src="../js/globalScripts.js" defer></script>
+  <script type="module" src="../js/myAccountScript.js" defer></script>
+</head>
+
+<body>
+  <!-- Navigation Bar Start -->
+  <div class="navbar-wrapper">
+    <img src="../assets/app_logo.png" alt="SkatePedia Logo">
+    <img class="logo-text" src="../assets/app_logo_text.png" alt="SkatePedia">
+    <button id="openNavbarButton" onclick="openNavbar()"><i class="fa fa-bars" aria-hidden="true"></i></i></button>
+
+    <nav id="navbar">
+      <ul>
+        <li id="closeNavbarButton"><a href="#" class="nav-bar-item" onclick="closeNavbar()"><i class="fa fa-times"
+              aria-hidden="true"></i></a></li>
+        <li class="home-li"><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="privacyPolicy.html">Privacy Policy</a></li>
+        <li><a href="termsOfService.html">Terms of Service</a></li>
+        <li><a class="active" href="myAccount.html">Login</a></li>
+      </ul>
+    </nav>
+
+    <div id="overlay" aria-hidden="true"></div>
+  </div>
+  <!-- Navigation Bar End -->
+
+  <main>
+    <div class="loading-animation" id="loadingAnimation"></div>
+
+    <!-- Login Page Start -->
+    <div class="login-wrapper" id="loginPage">
+      <h1>Login to Your Account</h1>
+
+      <div class="status-message" id="loginStatusMessage"></div>
+
+      <div class="input-field-wrapper">
+        <label class="input-field">
+          <input type="email" id="emailInput" placeholder="&nbsp;" required />
+          <span class="placeholder">Email</span>
+        </label>
+
+        <label class="input-field">
+          <input type="password" id="passwordInput" placeholder="&nbsp;" required />
+          <span class="placeholder">Password</span>
+        </label>
+      </div>
+
+
+      <button type="submit" id="loginButton">Login</button>
+      <p><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
+      <h4>To create an account, download the app from the Appstore.</h4>
+    </div>
+    <!-- Login Page End -->
+
+    <!-- My Account Page Start  -->
+    <div class="my-account-wrapper" id="myAccountPage">
+      <section>
+        <h1>Account Information</h1>
+
+        <div class="row">
+          <img id="profilePhoto" src="../assets/default_profile_image.jpg" alt="Profile Photo">
+
+          <div class="account-controls">
+            <div class="status-message" id="accountInfoStatusMessage"></div>
+            <button id="logoutButton">Logout</button>
+            <button id="openChangePasswordButton">Change Password</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <p>Username: </p>
+          <p id="username"></p>
+        </div>
+
+        <div class="row">
+          <p>Email: </p>
+          <p id="email"></p>
+        </div>
+
+        <div class="row">
+          <p>Stance: </p>
+          <p id="stance"></p>
+        </div>
+
+        <div class="row">
+          <p>Date Created: </p>
+          <p id="dateCreated"></p>
+        </div>
+
+        <div class="row">
+          <p>Bio: </p>
+          <p id="bio"></p>
+        </div>
+      </section>
+
+      <section>
+        <h1>Trick Progress</h1>
+        <div class="status-message" id="trickProgressStatusMessage"></div>
+        <div class="total-progress-bar trick-progress-bar">
+          <p>Total :</p>
+          <progress id="totalProgress" class="progress-bar" type="range" min="0" max="100"></progress>
+          <p id="totalTricksCounter"></p>
+        </div>
+
+        <div class="progress-by-stance-wrapper">
+          <div class="trick-progress-bar">
+            <p>Regular :</p>
+            <progress id="regularProgress" class="progress-bar"></progress>
+            <p id="regularTricksCounter"></p>
+          </div>
+
+          <div class="trick-progress-bar">
+            <p>Fakie :</p>
+            <progress id="fakieProgress" class="progress-bar"></progress>
+            <p id="fakieTricksCounter"></p>
+          </div>
+
+          <div class="trick-progress-bar">
+            <p>Switch :</p>
+            <progress id="switchProgress" class="progress-bar"></progress>
+            <p id="switchTricksCounter"></p>
+          </div>
+
+          <div class="trick-progress-bar">
+            <p>Nollie :</p>
+            <progress id="nollieProgress" class="progress-bar"></progress>
+            <p id="nollieTricksCounter"></p>
+          </div>
+        </div>
+      </section>
+
+      <div class="change-password-popup-wrapper" id="changePasswordPopup">
+        <span id="closeChangePasswordButton" class="close-change-password-button">&times;</span>
+        <h1>Update Password</h1>
+        <p id="changePasswordStatusMessage" class="status-message"></p>
+
+        <label class="input-field">
+          <input type="password" id="newPassword" placeholder="&nbsp;" required />
+          <span class="placeholder">New Password</span>
+        </label>
+        
+        <button id="changePasswordButton">Change Password</button>
+      </div>
+
+    </div>
+    <!-- My Account Page End  -->
+
+    <div id="myAccountOverlay" aria-hidden="true"></div>
+  </main>
+</body>
+
+</html>

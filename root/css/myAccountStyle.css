@@ -1,0 +1,481 @@
+/*
+Author: Brayden Strivens <bdstrivens@gmail.com>
+Description: Styles for the login/my-account pages
+Version: 1.0.0
+*/
+
+/*
+-------------------------------------------------------------------------------
+Table of Contents:
+-------------------------------------------------------------------------------
+1.  Login Page
+2.  Custom Input Field
+3.  My Account Page
+4.  Change Password Popup
+5.  Media Queries
+-------------------------------------------------------------------------------
+*/
+/* 
+main {
+  max-height: calc(100dvh - 100px);
+} */
+
+.loading-animation {
+  height: 15px;
+  aspect-ratio: 5;
+  background: radial-gradient(closest-side at 37.5% 50%, var(--accent-color) 94%, #0000) 0/calc(80%/3) 100%;
+  animation: l47 .75s infinite;
+}
+
+@keyframes l47 {
+  100% {
+    background-position: 36.36%
+  }
+}
+
+h1 {
+  color: var(--text-accent-color);
+  border-bottom: 1px solid var(--accent-color);
+}
+
+p {
+  color: var(--text-color);
+}
+
+.status-message {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+/* 1. Login Page  */
+
+.login-wrapper {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: clamp(1.5rem, 6vw, 3rem) clamp(1.5rem, 6vw, 7rem);
+  border-radius: 3rem;
+  background: var(--background-color-200);
+  max-width: 90%;
+  margin: auto;
+}
+
+.login-wrapper h1 {
+  padding: 0 0.5rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: 1.5rem;
+}
+
+.login-wrapper h4 {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+}
+
+.login-wrapper p {
+  margin: 1rem 0;
+}
+
+.login-wrapper a {
+  text-decoration: none;
+  color: var(--text-accent-color);
+  outline: none;
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    color: var(--text-hover-color);
+    text-decoration: underline;
+  }
+}
+
+.login-wrapper button {
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 0.75rem 2.5rem;
+  border-radius: 1.5rem;
+  background-color: var(--button-color);
+  color: var(--text-color);
+  border: none;
+  outline: none;
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    background-color: var(--button-hover-color);
+  }
+}
+
+.input-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  gap: 1rem;
+  width: clamp(15rem, 60vw, 30rem);
+}
+
+/* 2. Custom Input Field  */
+
+.input-field {
+  position: relative;
+  font-size: 1rem;
+  display: inline-block;
+  width: 100%;
+  --field-padding: 0.75rem;
+}
+
+/* Keeps the background and font color constent when auto filling the login input fields */
+.input-field input:-webkit-autofill,
+.input-field input:-webkit-autofill:hover,
+.input-field input:-webkit-autofill:focus-visible,
+.input-field input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--background-color-200) inset !important;
+  box-shadow: 0 0 0 1000px var(--background-color-200) inset !important;
+  -webkit-text-fill-color: var(--text-color) !important;
+  font-size: 1rem !important;
+  caret-color: white !important;
+  /* transition: background-color 5000s ease-in-out 0s; */
+}
+
+.input-field input {
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--background-color-100);
+  padding: var(--field-padding);
+  border-radius: 6px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.input-field .placeholder {
+  position: absolute;
+  left: var(--field-padding);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color);
+  transition:
+    top 300ms ease,
+    font-size 300ms ease,
+    color 300ms ease;
+}
+
+.input-field input {
+  background: none;
+  border: 2px solid rgba(128, 128, 128, 0.205);
+  transition: border-color 0.3s ease;
+}
+
+.input-field input+.placeholder {
+  left: 0.5rem;
+  padding: 0 5px;
+}
+
+.input-field input.valid-input+.placeholder,
+.input-field input:not(:placeholder-shown)+.placeholder,
+.input-field input:focus-visible+.placeholder {
+  top: 0;
+  font-size: 0.75rem;
+  color: var(--text-hover-color);
+  background: var(--background-color-200);
+}
+
+.input-field input.valid-input,
+.input-field input:not(:placeholder-shown),
+.input-field input:focus-visible {
+  border: 2px solid var(--text-accent-color);
+}
+
+/* 3. My Account Page  */
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 3rem;
+}
+
+.my-account-wrapper {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.my-account-wrapper h1 {
+  padding: 1rem;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+}
+
+.row {
+  display: flex;
+  align-items: start;
+  flex-direction: row;
+  max-width: 500px;
+  width: clamp(90%, 400px, 50%);
+  padding: 0.5rem 1rem;
+}
+
+.row>*:first-child {
+  color: var(--text-accent-color-200);
+}
+
+.row:first-of-type {
+  padding: 1rem 1rem;
+}
+
+.row+.row {
+  border-top: 1px solid var(--accent-color);
+}
+
+.row p {
+  font-size: 1.2rem;
+}
+
+.row p+p {
+  text-align: right;
+  margin-left: auto;
+  flex-grow: 1;
+}
+
+#bio {
+  margin-left: 3vw;
+}
+
+.row img {
+  width: 100px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.account-controls {
+  display: flex;
+  align-items: end;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin-top: auto;
+  margin-left: auto;
+  gap: 0.5rem;
+}
+
+.account-controls button {
+  border: none;
+  background: none;
+  color: var(--text-accent-color);
+  font-size: 1rem;
+  text-align: right;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: var(--text-hover-color);
+    text-decoration: underline;
+  }
+}
+
+.progress-by-stance-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.trick-progress-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.trick-progress-bar progress {
+  flex-grow: 1;
+  max-height: 0.75rem;
+  appearance: none;
+}
+
+.total-progress-bar {
+  max-width: 1000px;
+  width: clamp(90%, 1000px, 80%);
+  margin-bottom: 1rem;
+}
+
+.progress-bar::-webkit-progress-bar {
+  background: linear-gradient(rgb(185, 185, 185), rgb(201, 199, 199), rgb(201, 199, 199), white);
+  border-radius: 0.5rem;
+}
+
+.progress-bar::-webkit-progress-value {
+  background: linear-gradient(var(--text-hover-color), var(--accent-color));
+  border-radius: 0.5rem;
+}
+
+.progress-bar::-moz-progress-bar {
+  background: linear-gradient(var(--text-hover-color), var(--accent-color));
+  border-radius: 0.5rem;
+}
+
+/* 4. Change Password Popup  */
+
+.change-password-popup-wrapper {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--background-color-200);
+  border-radius: 2rem;
+  padding: 1rem 4rem;
+  position: absolute;
+  z-index: 10000;
+  text-align: center;
+  max-width: 90%;
+  top: calc(50dvh - 100px)
+}
+
+.close-change-password-button {
+  color: var(--text-color);
+  position: absolute;
+  top: 0;
+  right: 10px;
+  margin: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: var(--text-hover-color);
+  }
+}
+
+.change-password-popup-wrapper h1 {
+  font-size: 2.5rem;
+}
+
+.change-password-popup-wrapper .input-field {
+  margin: 1rem 0;
+}
+
+.change-password-popup-wrapper button {
+  background-color: var(--button-color);
+  color: var(--text-color);
+  padding: 1rem 2.5rem;
+  border-radius: 1.5rem;
+  border: none;
+  font-size: 1.25rem;
+  margin: 1rem 0;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    background-color: var(--button-hover-color);
+  }
+}
+
+.change-password-popup-wrapper p {
+  max-width: 40ch;
+}
+
+#myAccountOverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+}
+
+/* 5. Media Queries  */
+
+@media (width < 600px) {
+
+  .loggin-wrapper h1,
+  .my-account-wrapper h1 {
+    padding: 1rem;
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .row+.row {
+    flex-direction: column;
+  }
+
+  .row>*:first-child {
+    font-size: 1rem;
+    color: rgb(255, 237, 214);
+  }
+
+  .row p+p {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  #bio {
+    margin-left: 0;
+  }
+
+  .trick-progress-bar {
+    width: 90%;
+  }
+
+  .total-progress-bar {
+    width: 100%;
+  }
+
+  .change-password-popup-wrapper {
+    padding: 1rem 2rem;
+  }
+
+  .change-password-popup-wrapper h1 {
+    font-size: 2rem;
+  }
+
+  .change-password-popup-wrapper button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (width < 450px) {
+  section {
+    padding: 0 2vw;
+  }
+
+  .login-wrapper {
+    border-radius: 1.5rem;
+  }
+
+  .progress-by-stance-wrapper {
+    width: 100%;
+    gap: unset;
+  }
+
+  .trick-progress-bar {
+    height: 70px;
+    margin-bottom: unset;
+    position: relative;
+  }
+
+  .trick-progress-bar progress {
+    width: 100%;
+  }
+
+  .trick-progress-bar>*:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .trick-progress-bar>*:last-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

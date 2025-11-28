@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkatePedia</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link rel="stylesheet" href="/css/globalStyles.css">
+  <script src="https://kit.fontawesome.com/dde4619a0f.js" crossorigin="anonymous"></script>
+  <script src="/js/globalScripts.js" defer></script>
+</head>
+<body>
+  <!-- Navigation Bar Start -->
+  <div class="navbar-wrapper">
+    <img src="../assets/app_logo.png" alt="SkatePedia Logo">
+    <img class="logo-text" src="../assets/app_logo_text.png" alt="SkatePedia">
+    <button id="openNavbarButton" onclick="openNavbar()"><i class="fa fa-bars" aria-hidden="true"></i></i></button>
+
+    <nav id="navbar">
+      <ul>
+        <li id="closeNavbarButton"><a href="#" class="nav-bar-item" onclick="closeNavbar()"><i class="fa fa-times" aria-hidden="true"></i></a></li>
+        <li class="home-li"><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="privacyPolicy.html">Privacy Policy</a></li>
+        <li><a class="active" href="termsOfService.html">Terms of Service</a></li>
+        <li><a href="myAccount.html">Login</a></li>
+      </ul>
+    </nav>
+
+    <div id="overlay" onClick="closeSidebar()" aria-hidden="true"></div>
+  </div>
+  <!-- Navigation Bar End -->
+</body>
+</html>
+

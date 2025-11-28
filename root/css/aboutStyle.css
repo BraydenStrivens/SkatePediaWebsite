@@ -1,0 +1,72 @@
+
+/*
+Author: Brayden Strivens <bdstrivens@gmail.com>
+Description: Styles for the about page
+Version: 1.0.0
+*/
+
+/*
+-------------------------------------------------------------------------------
+Table of Contents:
+-------------------------------------------------------------------------------
+1.  Login Page
+2.  Custom Input Field
+3.  My Account Page
+4.  Change Password Popup
+5.  Media Queries
+-------------------------------------------------------------------------------
+*/
+
+section {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  /* position: relative; */
+}
+
+.contact-methods-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  min-width: 20rem;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.row a { 
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 0 0.5rem;
+}
+
+.row p {
+  width: fit-content;
+  padding: 0;
+}
+
+.row > *:first-child {
+  padding-left: 2rem;
+  color: var(--text-accent-color-200);
+}
+
+.row p + p {
+  margin-left: auto;
+}
+
+h1 {
+  padding: 0.5rem 2rem;
+  width: 100%;
+  /* flex-grow: 1; */
+  color: var(--text-accent-color);
+  border-bottom: 1px solid var(--accent-color);
+}
+
+p {
+  padding: 0.5rem 2rem;
+  width: 100%;
+  color: var(--text-color);
+}
